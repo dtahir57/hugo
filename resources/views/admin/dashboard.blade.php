@@ -1,22 +1,27 @@
-@extends('layouts.app')
+@extends('admin.layouts')
+
+@section('title', 'Dashboard')
+
+@section('styles')
+
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('Admin Dashboard!') }}
-                </div>
+<div class="row gy-3 mb-6 justify-content-between">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Dashboard</h5>
             </div>
+            <div class="card-body">
+                <p>{{ __('Admin Dashboard!') }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pb-5">
+    <div class="row">
+        <div class="col-12 col-xxl-12">
         </div>
     </div>
 </div>
