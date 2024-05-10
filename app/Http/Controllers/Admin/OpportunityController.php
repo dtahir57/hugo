@@ -55,7 +55,9 @@ class OpportunityController extends Controller
     public function show(string $id)
     {
         $opportunity = Opportunity::find($id);
-        return view('admin.opportunity.view', compact('opportunity'));
+        $next = Opportunity::where('id', '>', $opportunity->id)->min('id');
+        $prev = Opportunity::where('id', '<', $opportunity->id)->max('id');
+        return view('admin.opportunity.view', compact('opportunity', 'next', 'prev'));
     }
 
     /**
