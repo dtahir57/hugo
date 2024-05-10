@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Opportunity;
 use App\Http\Requests\OpportunityRequest;
 use Session;
+use Carbon\Carbon;
 
 class OpportunityController extends Controller
 {
@@ -65,8 +66,8 @@ class OpportunityController extends Controller
      */
     public function edit(string $id)
     {
-        $opp = Opportunity::find($id);
-        return view('admin.opportunity.edit', compact('opp'));
+        $opportunity = Opportunity::find($id);
+        return view('admin.opportunity.edit', compact('opportunity'));
     }
 
     /**
@@ -74,6 +75,7 @@ class OpportunityController extends Controller
      */
     public function update(OpportunityRequest $request, string $id)
     {
+        dd($request);
         $opp = Opportunity::find($id);
         $opp->prospect_name = $request->prospect_name;
         $opp->prospect_email = $request->prospect_email;
@@ -101,5 +103,14 @@ class OpportunityController extends Controller
 
         Session::flash('deleted', 'Opportunity removed from database');
         return redirect()->route('admin.opportunity.index');
+    }
+
+    public function update_status(Request $request, $id)
+    {
+        $opp = Opportunity::find($id);
+        $opp->status = $request->status;
+        $opp->update();
+
+        return redirect()->route('admin.opportunity.show', $id);
     }
 }

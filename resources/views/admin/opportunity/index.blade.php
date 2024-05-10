@@ -26,10 +26,10 @@
                 <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col" class="col-1">Date</th>
+                        <th scope="col" class="col-2">Closing Date</th>
                         <th scope="col" class="col-1">Type</th>
                         <th scope="col" class="col-2">Title</th>
-                        <th scope="col" class="col-4">Description</th>
+                        <th scope="col" class="col-3">Description</th>
                         <th scope="col" class="col-2">Your Status</th>
                         <th scope="col" class="col-2">View Details</th>
                       </tr>
@@ -37,7 +37,7 @@
                     <tbody>
                         @foreach($opportunities as $opp)
                         <tr>
-                            <td>{{ $opp->closing_date }}</td>
+                            <td>{{ Carbon\Carbon::parse($opp->closing_date)->format('m/d/Y') }}</td>
                             <td>{{ ucwords(str_replace('-',' ',$opp->opportunity_type)) }}</td>
                             <td>{{ $opp->title }}</td>
                             <td>

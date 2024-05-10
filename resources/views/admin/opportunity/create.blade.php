@@ -70,7 +70,7 @@
                               <div class="mb-3 col-6">
                                 <label class="form-label" for="datepicker">Closing Date</label>
 
-                                <input class="form-control datetimepicker" name="closing_date" value="{{ old('closing_date') }}" id="datepicker" type="text" placeholder="dd/mm/yyyy" data-options='{"disableMobile":true,"dateFormat":"d/m/Y"}' />
+                                <input class="form-control" name="closing_date" value="{{ old('closing_date') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
                               </div>
                               
                               <div class="mb-3 col-6">
@@ -88,7 +88,7 @@
       
                                 <label class="form-label" for="basic-form-info">Opportunity Info</label>
       
-                                <textarea class="form-control" name="opportunity_info" id="basic-form-info" rows="5" placeholder="Opportunity Info"></textarea>
+                                <textarea class="form-control" name="opportunity_info" id="basic-form-info" rows="5" placeholder="Opportunity Info">{{ old('opportunity_info') }}</textarea>
                               </div>
       
                               <button class="btn btn-primary" type="submit">Submit</button>

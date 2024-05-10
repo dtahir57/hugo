@@ -23,6 +23,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], functio
     Route::post('opportunity', [OpportunityController::class, 'store'])->name('admin.opportunity.store');
     Route::get('opportunity/view/{id}', [OpportunityController::class, 'show'])->name('admin.opportunity.show');
     Route::get('opportunity/{id}/edit', [OpportunityController::class, 'edit'])->name('admin.opportunity.edit');
+    Route::patch('opportunity/update/{id}', [OpportunityController::class, 'update'])->name('admin.opportunity.update');
     Route::delete('opportunity/{id}', [OpportunityController::class, 'delete'])->name('admin.opportunity.delete');
+
+    Route::patch('opportunity/update/status/{id}', [OpportunityController::class, 'update_status'])->name('admin.opportunity.status');
     // Opportunity Routes Ends here
 });

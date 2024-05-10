@@ -14,4 +14,8 @@ class Opportunity extends Model
     {
         return $this->belongsToMany(User::class, 'opportunity_user', 'opportunity_id', 'user_id');
     }
+
+    // protected $casts = [
+    //     'closing_date' => 'date'
+    // ];
 }

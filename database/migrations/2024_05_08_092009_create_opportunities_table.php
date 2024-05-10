@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('opportunity_info')->nullable();
             $table->string('location')->nullable();
             $table->string('title')->nullable();
-            $table->date('closing_date')->nullable();
+            $table->dateTime('closing_date')->nullable();
             $table->string('opportunity_type')->nullable();
             $table->boolean('status')->nullable();
             $table->timestamps();
