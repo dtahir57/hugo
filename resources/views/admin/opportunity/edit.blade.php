@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+@foreach($errors->all() as $error)
+    <li class="alert alert-danger">{{ $error }}</li>
+@endforeach
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -43,7 +46,7 @@
   
                             <label class="form-label" for="basic-form-password">Prospect Phone</label>
   
-                            <input class="form-control" name="prospect_phone" value="{{ $opportunity->prospect_ohone }}" id="basic-form-password" type="text" placeholder="Prospect Phone" />
+                            <input class="form-control" name="prospect_phone" value="{{ $opportunity->prospect_phone }}" id="basic-form-password" type="text" placeholder="Prospect Phone" />
                           </div>
                           <div class="mb-3 col-6">
                             <label class="form-label" for="basic-form-password">Estimated Budget</label>
@@ -71,7 +74,8 @@
                           <div class="mb-3 col-6">
                             <label class="form-label" for="datepicker">Closing Date</label>
 
-                            <input class="form-control datetimepicker" name="closing_date" value="{{ $opportunity->closing_date }}" id="datepicker" type="text" placeholder="dd/mm/yyyy" data-options='{"disableMobile":true,"dateFormat":"d/m/Y"}' />
+                            <input class="form-control" name="closing_date" value="{{ Carbon\Carbon::parse($opportunity->closing_date)->format('Y-m-d') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
+                            
                           </div>
                           
                           <div class="mb-3 col-6">

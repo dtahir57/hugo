@@ -75,7 +75,6 @@ class OpportunityController extends Controller
      */
     public function update(OpportunityRequest $request, string $id)
     {
-        dd($request);
         $opp = Opportunity::find($id);
         $opp->prospect_name = $request->prospect_name;
         $opp->prospect_email = $request->prospect_email;
@@ -86,17 +85,16 @@ class OpportunityController extends Controller
         $opp->title = $request->title;
         $opp->closing_date = $request->closing_date;
         $opp->opportunity_type = $request->opportunity_type;
-        $opp->status = $request->status;
         $opp->update();
 
         Session::flash('updated', 'Opportunity updated Successfully!');
-        return redirect()->route('admin.opportunity.index');
+        return redirect()->route('admin.opportunity.edit', $id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         $opportunity = Opportunity::find($id);
         $opportunity->delete();

@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+@foreach($errors->all() as $error)
+  <li class="alert alert-danger"></li>
+@endforeach
 <div class="">
     <div class="row">
         <div class="col-12">

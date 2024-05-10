@@ -11,7 +11,8 @@
                     <h4>Opportunities</h4>
                     <div>
                         <a href="{{ route('admin.opportunity.edit', $opportunity->id) }}" type="button" class="btn btn-primary btn-sm">Edit</a>
-                        <a href="" type="button" class="btn btn-danger btn-sm">Delete</a>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
+                        {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Launch demo modal 2</button> --}}
                     </div>
                 </div>
                 <nav aria-label="breadcrumb" class="mt-3">
@@ -27,32 +28,25 @@
                     <h3>{{ $opportunity->title }}</h3>
                 </div>
                 <div class="row">
-                    <div class="col-2">
-                        @if($opportunity->status)
-                            <span class="badge badge-phoenix badge-phoenix-success">Active</span>
-                        @else
-                            <span class="badge badge-phoenix badge-phoenix-danger">In active</span>
-                        @endif
-                    </div>
-                    <div class="col-5">
-                        <p>Name: <span class="text-info">{{ $opportunity->prospect_name }}</span></p>
-                    </div>
-                    <div class="col-5">
-                        <p>Email: <span class="text-info">{{ $opportunity->prospect_email }}</span></p>
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-3">
-                        <p>Date: <span class="text-info">{{ date_format($opportunity->created_at, 'd/m/Y') }}</span></p>
-                    </div>
-                    <div class="col-3">
-                        <p>Closing Date: <span class="text-info">{{ Carbon\Carbon::parse($opportunity->closing_date)->format('m/d/Y') }}</span></p>
-                    </div>
-                    <div class="col-3">
-                        <p>Value: <span class="text-info">$ {{ number_format($opportunity->estimated_budget) }}</span></p>
-                    </div>
-                    <div class="col-3">
-                        <p>Type : <span class="text-info">{{ ucwords(str_replace('-',' ',$opportunity->opportunity_type)) }}</span></p>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="mb-1"><strong>Name:</strong> <span class="text-info">{{ $opportunity->prospect_name }}</span></p>
+                                <p class="mb-1"><strong>Email:</strong> <span class="text-info">{{ $opportunity->prospect_email }}</span></p>
+                                <p class="mb-1"><strong>Phone Number:</strong> <span class="text-info">{{ $opportunity->prospect_phone }}</span> </p>
+                                @if($opportunity->status)
+                                    <p><strong>Status:</strong> <span class="badge badge-phoenix badge-phoenix-success">Active</span></p>
+                                @else
+                                    <p><strong>Status:</strong> <span class="badge badge-phoenix badge-phoenix-danger">In active</span></p>
+                                @endif
+                            </div>
+                            <div>
+                                <p class="mb-1"><strong>Type:</strong> <span class="text-info">{{ ucwords(str_replace('-',' ',$opportunity->opportunity_type)) }}</span></p>
+                                <p class="mb-1"><strong>Value:</strong> <span class="text-info">$ {{ number_format($opportunity->estimated_budget) }}</span></p>
+                                <p class="mb-1"><strong>Date:</strong> <span class="text-info">{{ date_format($opportunity->created_at, 'd/m/Y') }}</span></p>
+                                <p class="mb-1"><strong>Closing Date:</strong> <span class="text-info">{{ Carbon\Carbon::parse($opportunity->closing_date)->format('m/d/Y') }}</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -64,7 +58,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div class="d-flex justify-content-around">
+                        <div class="d-flex justify-content-between">
                             {{-- Previous button --}}
                             @if ($prev)
                             <a href="{{ route('admin.opportunity.show', $prev) }}" type="button" class="btn btn-info btn-sm">Previous</a>
@@ -81,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-12">
                         <form action="{{ route('admin.opportunity.status', $opportunity->id) }}" method="POST">
                             @csrf
@@ -107,4 +101,6 @@
         </div>
     </div>
 </div>
+
+@include('admin.opportunity.delete_modal')
 @endsection
