@@ -118,10 +118,21 @@ class OpportunityController extends Controller
     {
         $users = array_unique($request->users);
         $opportunity = Opportunity::find($id);
-        if ($opportunity->users()->count() > 0) {
-            $opportunity->users()->sync($users);
-        } else {
-            $opportunity->users()->attach($users);
+        $currentUserdIds = $opportunity->users()->pluck('users.id')->toArray();
+
+        $usersToAdd = array_diff($users, $currentUserdIds);
+        $usersToRemove = array_diff($currentUserdIds, $users);
+
+        foreach($usersToAdd as $userId) {
+            if (!in_array($userId, $currentUserdIds)) {
+                $opportunity->users()->attach($userId);
+                $currentUserdIds[] = $userId;
+            }
+        }
+
+        foreach($usersToRemove as $userId) {
+            $opportunity->users()->detach($userId);
+            $currentUserdIds = array_diff($currentUserdIds, $userId);
         }
 
         return redirect()->route('admin.opportunity.show', $id);
