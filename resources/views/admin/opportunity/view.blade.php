@@ -2,9 +2,14 @@
 
 @section('title', "$opportunity->title | View Details")
 
+@section('styles')
+<link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+<link href="{{ Vite::asset('resources/assets/vendors/choices/choices.min.css')}}" rel="stylesheet" />
+@endsection
+
 @section('content')
 <div class="row">
-    <div class="col-8">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
@@ -12,7 +17,6 @@
                     <div>
                         <a href="{{ route('admin.opportunity.edit', $opportunity->id) }}" type="button" class="btn btn-primary btn-sm">Edit</a>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
-                        {{-- <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Launch demo modal 2</button> --}}
                     </div>
                 </div>
                 <nav aria-label="breadcrumb" class="mt-3">
@@ -92,15 +96,53 @@
             </div>
         </div>
     </div>
-    <div class="col-4">
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5>Assign Users</h5>
+                <div class="d-flex justify-content-between">
+                    <h5>Assigned Users</h5>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignUserModal">Assign User</button>
+                </div>
             </div>
-            <div class="card-body"></div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" id="usersTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($opportunity->users as $user)
+                            <tr>
+                                <td scope="row">{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <a href="{{ route('admin.opportunity.detach.user', [$opportunity->id, $user->id]) }}" type="button" class="btn btn-danger btn-sm">Remove User</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @include('admin.opportunity.delete_modal')
+@include('admin.opportunity.assign_user_modal')
+@endsection
+
+@section('scripts')
+<script src="{{ Vite::asset('resources/assets/vendors/choices/choices.min.js')}}"></script>
+<script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+<script>
+    let table = new DataTable('#usersTable');
+</script>
 @endsection

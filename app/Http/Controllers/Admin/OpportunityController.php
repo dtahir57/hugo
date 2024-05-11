@@ -8,6 +8,7 @@ use App\Models\Opportunity;
 use App\Http\Requests\OpportunityRequest;
 use Session;
 use Carbon\Carbon;
+use App\Models\User;
 
 class OpportunityController extends Controller
 {
@@ -58,7 +59,8 @@ class OpportunityController extends Controller
         $opportunity = Opportunity::find($id);
         $next = Opportunity::where('id', '>', $opportunity->id)->min('id');
         $prev = Opportunity::where('id', '<', $opportunity->id)->max('id');
-        return view('admin.opportunity.view', compact('opportunity', 'next', 'prev'));
+        $users = User::doesntHave('roles')->get();
+        return view('admin.opportunity.view', compact('opportunity', 'next', 'prev', 'users'));
     }
 
     /**
@@ -110,5 +112,26 @@ class OpportunityController extends Controller
         $opp->update();
 
         return redirect()->route('admin.opportunity.show', $id);
+    }
+
+    public function assign_users(Request $request, $id)
+    {
+        $users = array_unique($request->users);
+        $opportunity = Opportunity::find($id);
+        if ($opportunity->users()->count() > 0) {
+            $opportunity->users()->sync($users);
+        } else {
+            $opportunity->users()->attach($users);
+        }
+
+        return redirect()->route('admin.opportunity.show', $id);
+    }
+
+    public function detach_user($opp_id, $user_id)
+    {
+        $user = User::find($user_id);
+        $user->opportunities()->detach();
+
+        return redirect()->route('admin.opportunity.show', $opp_id);
     }
 }

@@ -2,6 +2,10 @@
 
 @section('title', "Users List")
 
+@section('styles')
+<link rel="stylesheet" href="//cdn.datatables.net/2.0.7/css/dataTables.dataTables.min.css">
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-12">
@@ -16,9 +20,34 @@
                 </nav>
             </div>
             <div class="card-body">
-                {{--  --}}
+                <div class="table-responsive">
+                    <table class="table" id="usersTable">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($users as $user)
+                            <tr>
+                                <th scope="row">{{ $user->id }}</th>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script src="//cdn.datatables.net/2.0.7/js/dataTables.min.js"></script>
+<script>
+    let table = new DataTable('#usersTable');
+</script>
 @endsection
