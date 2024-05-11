@@ -30,14 +30,16 @@ class OpportunityRequest extends FormRequest
                     'prospect_name' => 'required|string',
                     'prospect_email' => 'required|email|unique:opportunities',
                     'title' => 'required|string',
-                    'prospect_phone' => 'string'
+                    'prospect_phone' => 'string',
+                    'closing_date' => 'required'
                 ];
             case 'PATCH':
                 return [
                     'prospect_name' => 'required|string',
                     'prospect_email' => 'required|email',
                     'title' => 'required|string',
-                    'prospect_phone' => 'string'
+                    'prospect_phone' => 'string',
+                    'closing_date' => 'required'
                 ];
             case 'DEFAULT':
                 return [];

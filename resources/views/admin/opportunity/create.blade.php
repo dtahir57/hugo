@@ -73,7 +73,7 @@
                               <div class="mb-3 col-6">
                                 <label class="form-label" for="datepicker">Closing Date</label>
 
-                                <input class="form-control" name="closing_date" value="{{ old('closing_date') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
+                                <input class="form-control" required name="closing_date" value="{{ old('closing_date') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
                               </div>
                               
                               <div class="mb-3 col-6">

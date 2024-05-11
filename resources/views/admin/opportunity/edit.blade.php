@@ -74,7 +74,7 @@
                           <div class="mb-3 col-6">
                             <label class="form-label" for="datepicker">Closing Date</label>
 
-                            <input class="form-control" name="closing_date" value="{{ Carbon\Carbon::parse($opportunity->closing_date)->format('Y-m-d') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
+                            <input class="form-control" required name="closing_date" value="{{ Carbon\Carbon::parse($opportunity->closing_date)->format('Y-m-d') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
                             
                           </div>
                           

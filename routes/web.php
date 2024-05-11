@@ -4,12 +4,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OpportunityController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+Route::get('register', function () {
+    return redirect()->route('login');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
@@ -28,4 +32,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], functio
 
     Route::patch('opportunity/update/status/{id}', [OpportunityController::class, 'update_status'])->name('admin.opportunity.status');
     // Opportunity Routes Ends here
+
+    // Users Routes Starts here
+    Route::get('users', [UserController::class, 'index'])->name('admin.user.index');
+    // Users Routes ends here
 });
