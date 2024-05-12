@@ -15,7 +15,9 @@ Route::get('register', function () {
     return redirect()->route('login');
 });
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/opportunities', [HomeController::class, 'index'])->name('home');
+Route::get('/opportunity/{id}', [HomeController::class, 'view_opportunity'])->name('user.view.opportunity');
+Route::get('filter/opportunity', [HomeController::class, 'filter_opportunities'])->name('user.filter.opportunities');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], function () {
     // Dashboard Controller

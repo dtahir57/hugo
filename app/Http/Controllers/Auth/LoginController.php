@@ -33,7 +33,7 @@ class LoginController extends Controller
         if ($role->contains('Super_User')) {
             return 'admin/dashboard';
         } else {
-            return '/home';
+            return '/opportunities';
         }
     }
 
