@@ -72,4 +72,19 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Post a Feedback</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    @csrf
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
