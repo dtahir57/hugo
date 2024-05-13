@@ -10,6 +10,7 @@ use Session;
 use Carbon\Carbon;
 use App\Models\User;
 use DB;
+use App\Models\OpportunityUser;
 
 class OpportunityController extends Controller
 {
@@ -114,28 +115,23 @@ class OpportunityController extends Controller
         return redirect()->route('admin.opportunity.show', $id);
     }
 
-    public function assign_users(Request $request, $id)
+    public function assign_users(Request $request, $opp_id)
     {
         $users = array_unique($request->users);
-        $opportunity = Opportunity::find($id);
-        $currentUserdIds = $opportunity->users()->pluck('users.id')->toArray();
-
-        $usersToAdd = array_diff($users, $currentUserdIds);
-        $usersToRemove = array_diff($currentUserdIds, $users);
-
-        foreach($usersToAdd as $userId) {
-            if (!in_array($userId, $currentUserdIds)) {
-                $opportunity->users()->attach($userId);
-                $currentUserdIds[] = $userId;
+        foreach($users as $user_id) {
+            $pivotRecord = OpportunityUser::where('opportunity_id', $opp_id)
+                                            ->where('user_id', $user_id)
+                                            ->first();
+            
+            if (!$pivotRecord) {
+                $opp_usr = new OpportunityUser;
+                $opp_usr->opportunity_id = $opp_id;
+                $opp_usr->user_id = $user_id;
+                $opp_usr->save();
             }
         }
 
-        foreach($usersToRemove as $userId) {
-            $opportunity->users()->detach($userId);
-            $currentUserdIds = array_diff($currentUserdIds, $userId);
-        }
-
-        return redirect()->route('admin.opportunity.show', $id);
+        return redirect()->route('admin.opportunity.show', $opp_id);
     }
 
     public function detach_user($opp_id, $user_id)
