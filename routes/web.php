@@ -5,10 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OpportunityController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\StripeController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [StripeController::class, 'index'])->name('stripe.index');
+Route::post('stripe/checkout', [StripeController::class, 'checkout'])->name('stripe.checkout');
+Route::get('stripe/success', [StripeController::class, 'success'])->name('stripe.success');
 
 Auth::routes();
 Route::get('register', function () {

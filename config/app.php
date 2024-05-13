@@ -98,6 +98,8 @@ return [
     'cipher' => 'AES-256-CBC',
 
     'key' => env('APP_KEY'),
+    'stripe_pk' => env('STRIPE_KEY'),
+    'stripe_sk' => env('STRIPE_SECRET'),
 
     'previous_keys' => [
         ...array_filter(
