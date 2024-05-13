@@ -2,6 +2,12 @@
 
 @section('title', 'Opportunities')
 
+@section('styles')
+{{-- <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}"> --}}
+<link href="{{ Vite::asset('vendor/pagination/pagination.css') }}" rel="stylesheet">
+</style>
+@endsection
+
 @section('content')
 @if ($opportunities->count() > 0)
 <div class="row">
@@ -15,12 +21,39 @@
                     <h4>Oppotunities List</h4>
                     <a href="{{ route('admin.opportunity.create') }}" type="button" class="btn btn-success btn-sm">+ Add New</a>
                 </div>
-                <nav aria-label="breadcrumb" class="mt-3">
+                <nav aria-label="breadcrumb" class="mt-3 mb-3">
                     <ol class="breadcrumb">
                       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
                       <li class="breadcrumb-item active" aria-current="page">Opportunities</li>
                     </ol>
                 </nav>
+                <form action="{{ route('admin.opportunity.filter') }}" method="GET">
+                    <div class="row">
+                        <h5>Filters</h5>
+                        @csrf
+                        <div class="col-4">
+                            <select name="status" class="form-select" aria-label="Default select example">
+                                <option selected disabled>Select Status</option>
+                                <option value="active" {{ (isset($status) AND $status == 'active') ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ (isset($status) AND $status == 'inactive') ? 'selected': '' }}>Inactive</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <select name="type" class="form-select" aria-label="Default select example">
+                                <option selected disabled>Select Type</option>
+                                <option value="prospect-intelligence" {{ (isset($type) AND $type == 'prospect-intelligence') ? 'selected' : '' }}>Prospect Intelligence</option>
+                                <option value="request-for-proposal" {{ (isset($type) AND $type == 'request-for-proposal') ? 'selected' : '' }}>Request For Proposal</option>
+                                <option value="buying-signal" {{ (isset($type) AND $type == 'buying-signal') ? 'selected' : '' }}>Buying Signal</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-flex justify-content-around">
+                                <input type="submit" class="btn btn-success" value="Apply Filters" />
+                                <a href="{{ route('admin.opportunity.index') }}" type="button" class="btn btn-primary">Clear Filters</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="card-body">
                 <table class="table table-borderless">
@@ -47,7 +80,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if($opp->status)
+                                @if($opp->status == 'active')
                                     <span class="badge badge-phoenix badge-phoenix-success">Active</span>
                                 @else
                                     <span class="badge badge-phoenix badge-phoenix-danger">In active</span>
@@ -60,6 +93,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $opportunities->links() }}
             </div>
         </div>
     </div>

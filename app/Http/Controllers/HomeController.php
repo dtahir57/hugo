@@ -41,7 +41,7 @@ class HomeController extends Controller
         $query = Opportunity::query();
 
         $type = $request->type;
-        $status = (int) $request->status;
+        $status = $request->status;
 
         if ($request->has('type')) {
             $query->where('opportunity_type', $type);
@@ -51,7 +51,7 @@ class HomeController extends Controller
             $query->where('status', $status);
         }
 
-        $opportunities = $query->paginate(10);
+        $opportunities = $query->paginate(10)->withQueryString();
 
         return view('home', compact('opportunities', 'type', 'status'));
     }

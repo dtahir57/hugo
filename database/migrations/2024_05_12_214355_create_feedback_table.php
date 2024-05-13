@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+
+            $table->unsignedBigInteger('opportunity_id');
+            $table->foreign('opportunity_id')
+                    ->references('id')
+                    ->on('opportunities')
+                    ->onDelete('cascade')
+                    ->onUpdate('cascade');
+                    
+            $table->text('feedback');
             $table->timestamps();
         });
     }

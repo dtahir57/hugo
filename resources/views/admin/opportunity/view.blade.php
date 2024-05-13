@@ -38,7 +38,7 @@
                                 <p class="mb-1"><strong>Name:</strong> <span class="text-info">{{ $opportunity->prospect_name }}</span></p>
                                 <p class="mb-1"><strong>Email:</strong> <span class="text-info">{{ $opportunity->prospect_email }}</span></p>
                                 <p class="mb-1"><strong>Phone Number:</strong> <span class="text-info">{{ $opportunity->prospect_phone }}</span> </p>
-                                @if($opportunity->status)
+                                @if($opportunity->status === 'active')
                                     <p><strong>Status:</strong> <span class="badge badge-phoenix badge-phoenix-success">Active</span></p>
                                 @else
                                     <p><strong>Status:</strong> <span class="badge badge-phoenix badge-phoenix-danger">In active</span></p>
@@ -86,8 +86,8 @@
                             <input type="hidden" name="_method" value="PATCH" />
                             <label for="Status" class="form-label">Status</label>
                             <select name="status" class="form-select form-control" id="basic-form-status">
-                                <option value=1 {{ ($opportunity->status) ? 'selected' : '' }}>Active</option>
-                                <option value=0 {{ (!$opportunity->status) ? 'selected' : '' }}>In active</option>
+                                <option value="active" {{ ($opportunity->status === 'active') ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ ($opportunity->status === 'inactive') ? 'selected' : '' }}>In active</option>
                             </select>
                             <button type="submit" class="btn btn-success btn-sm mt-3">Update Status</button>
                         </form>

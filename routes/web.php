@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], functio
     Route::get('opportunity/{id}/edit', [OpportunityController::class, 'edit'])->name('admin.opportunity.edit');
     Route::patch('opportunity/update/{id}', [OpportunityController::class, 'update'])->name('admin.opportunity.update');
     Route::delete('opportunity/{id}', [OpportunityController::class, 'destroy'])->name('admin.opportunity.delete');
+    Route::get('opportunity/filter', [OpportunityController::class, 'filter_opportunities'])->name('admin.opportunity.filter');
 
     Route::patch('opportunity/update/status/{id}', [OpportunityController::class, 'update_status'])->name('admin.opportunity.status');
     Route::post('opportunity/assign_users/{opp_id}', [OpportunityController::class, 'assign_users'])->name('admin.opportunity.assign.users');

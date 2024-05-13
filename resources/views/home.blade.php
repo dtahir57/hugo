@@ -23,8 +23,8 @@
                         <div class="col-4">
                             <select name="status" class="form-select" aria-label="Default select example">
                                 <option selected disabled>Select Status</option>
-                                <option value=1 {{ (isset($status) AND $status === 1) ? 'selected' : '' }}>Active</option>
-                                <option value=0 {{ (isset($status) AND $status !== null AND $status === 0) ? 'selected': '' }}>Inactive</option>
+                                <option value="active" {{ (isset($status) AND $status == 'active') ? 'selected' : '' }}>Active</option>
+                                <option value="inactive" {{ (isset($status) AND  $status == 'inactive') ? 'selected': '' }}>Inactive</option>
                             </select>
                         </div>
                         <div class="col-4">
@@ -69,7 +69,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if($opp->status)
+                                @if($opp->status == 'active')
                                     <span class="badge badge-phoenix badge-phoenix-success">Active</span>
                                 @else
                                     <span class="badge badge-phoenix badge-phoenix-danger">In active</span>

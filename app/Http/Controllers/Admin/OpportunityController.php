@@ -9,6 +9,7 @@ use App\Http\Requests\OpportunityRequest;
 use Session;
 use Carbon\Carbon;
 use App\Models\User;
+use DB;
 
 class OpportunityController extends Controller
 {
@@ -17,7 +18,7 @@ class OpportunityController extends Controller
      */
     public function index()
     {
-        $opportunities = Opportunity::all();
+        $opportunities = DB::table('opportunities')->paginate(10);
         return view('admin.opportunity.index', compact('opportunities'));
     }
 
@@ -44,7 +45,6 @@ class OpportunityController extends Controller
         $opp->title = $request->title;
         $opp->closing_date = $request->closing_date;
         $opp->opportunity_type = $request->opportunity_type;
-        $opp->status = 1;
         $opp->save();
 
         Session::flash('created', 'New Opportunity Added Successfully!');
@@ -144,5 +144,25 @@ class OpportunityController extends Controller
         $user->opportunities()->detach();
 
         return redirect()->route('admin.opportunity.show', $opp_id);
+    }
+
+    public function filter_opportunities(Request $request)
+    {
+        $query = Opportunity::query();
+
+        $type = $request->type;
+        $status = $request->status;
+
+        if ($request->has('type')) {
+            $query->where('opportunity_type', $type);
+        }
+
+        if ($request->has('status')) {
+            $query->where('status', $status);
+        }
+
+        $opportunities = $query->paginate(10)->withQueryString();
+
+        return view('admin.opportunity.index', compact('opportunities', 'type', 'status'));
     }
 }
