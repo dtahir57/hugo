@@ -72,18 +72,38 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mt-3">
     <div class="col-12">
+        @if($feedback)
+        <div class="card">
+            <div class="card-header">
+                <h4>Your Feedback</h4>
+                <li class="alert alert-success">We've got your feedback and will response accordingly!</li>
+            </div>
+            <div class="card-body">
+                <h5>{{ $feedback->feedback }}</h5>
+                <p class="text-muted">{{ $feedback->created_at->diffForHumans() }}</p>
+            </div>
+        </div>
+        @else
         <div class="card">
             <div class="card-header">
                 <h4>Post a Feedback</h4>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('user.feedback.store', $opportunity->id) }}" method="POST">
                     @csrf
+                    <div class="mb-2">
+                        <label class="form-label" for="feedbackTextarea">Feedback</label>                      
+                        <textarea name="feedback" required class="form-control" id="feedbackTextarea" rows="3"> </textarea>
+                    </div>
+                    <div class="mb-0">
+                        <input type="submit" class="btn btn-success btn-sm" value="Submit" />
+                    </div>
                 </form>
             </div>
         </div>
+        @endif
     </div>
 </div>
 

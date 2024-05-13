@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Opportunity extends Model
 {
@@ -18,4 +19,9 @@ class Opportunity extends Model
     // protected $casts = [
     //     'closing_date' => 'date'
     // ];
+
+    public function feedbacks() : HasMany
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }

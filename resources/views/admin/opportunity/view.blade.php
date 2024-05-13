@@ -135,6 +135,26 @@
     </div>
 </div>
 
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Feedbacks</h4>
+            </div>
+            <div class="card-body">
+                @forelse($opportunity->feedbacks as $feedback)
+                <h5>{{ $feedback->user->name }}</h5>
+                <p class="text-muted">{{ $feedback->user->email }} - {{ date_format($feedback->created_at, 'd/m/Y') }} ({{ $feedback->created_at->diffForHumans() }}) </p>
+                <p class="mt-3">{{ $feedback->feedback }}</p>
+                <hr />
+                @empty
+                <p>No feedbacks found!</p>
+                @endforelse
+            </div>
+        </div>
+    </div>
+</div>
+
 @include('admin.opportunity.delete_modal')
 @include('admin.opportunity.assign_user_modal')
 @endsection

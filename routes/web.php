@@ -17,6 +17,7 @@ Route::get('register', function () {
 
 Route::get('/opportunities', [HomeController::class, 'index'])->name('home');
 Route::get('/opportunity/{id}', [HomeController::class, 'view_opportunity'])->name('user.view.opportunity');
+Route::post('opportunity/feedback/{id}', [HomeController::class, 'store_feedback'])->name('user.feedback.store');
 Route::get('filter/opportunity', [HomeController::class, 'filter_opportunities'])->name('user.filter.opportunities');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], function () {
