@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use DB;
 use App\Models\OpportunityUser;
+use App\Jobs\SendEmailJob;
 
 class OpportunityController extends Controller
 {
@@ -128,6 +129,9 @@ class OpportunityController extends Controller
                 $opp_usr->opportunity_id = $opp_id;
                 $opp_usr->user_id = $user_id;
                 $opp_usr->save();
+
+                $user = User::find($user_id);
+                dispatch(new SendEmailJob($user, $opp_id));
             }
         }
 
