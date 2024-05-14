@@ -29,7 +29,8 @@ export default defineConfig({
                 'resources/assets/img/spot-illustrations/2.png',
                 'resources/assets/img/spot-illustrations/dark_2.png',
                 'resources/assets/vendors/flatpickr/flatpickr.min.css',
-                'resources/assets/vendors/flatpickr/flatpickr.min.js'
+                'resources/assets/vendors/flatpickr/flatpickr.min.js',
+                'resources/assets/vendors/choices/choices.min.css'
                 
             ],
             refresh: true,
