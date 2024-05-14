@@ -216,7 +216,7 @@
     <!--    JavaScripts-->
     <!-- ===============================================-->
     @vite(['resources/assets/vendors/popper/popper.min.js',
-            'resources/assets/vendors/bootstrap/bootstrap.min.js',
+            'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
             // 'resources/assets/vendors/anchorjs/anchor.min.js',
             // 'resources/assets/vendors/is/is.min.js',
             'resources/assets/vendors/fontawesome/all.min.js',
