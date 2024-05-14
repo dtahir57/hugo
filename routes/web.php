@@ -6,21 +6,31 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OpportunityController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\StripeController;
+use App\Http\Middleware\SubscriptionMiddleware;
 
-Route::get('/', [StripeController::class, 'index'])->name('stripe.index');
-Route::post('stripe/checkout', [StripeController::class, 'checkout'])->name('stripe.checkout');
-Route::get('stripe/success', [StripeController::class, 'success'])->name('stripe.success');
+// Route::get('/', function() {
+//     return view('welcome');
+// });
+
+Route::get('stripe', [StripeController::class, 'index'])->name('stripe.index');
+Route::get('stripe/checkout/{plan_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');
+// Route::get('stripe/success', function () {
+//     return redirect()->route('oppo')
+// })
 
 Auth::routes();
-Route::get('register', function () {
-    return redirect()->route('login');
+Route::get('/', function () {
+    return redirect()->route('register');
 });
+
+Route::middleware([SubscriptionMiddleware::class])->group(function () {
 
 Route::get('/opportunities', [HomeController::class, 'index'])->name('home');
 Route::get('/opportunity/{id}', [HomeController::class, 'view_opportunity'])->name('user.view.opportunity');
 Route::post('opportunity/feedback/{id}', [HomeController::class, 'store_feedback'])->name('user.feedback.store');
 Route::get('filter/opportunity', [HomeController::class, 'filter_opportunities'])->name('user.filter.opportunities');
 
+});
 Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], function () {
     // Dashboard Controller
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

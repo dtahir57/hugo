@@ -11,30 +11,14 @@ class StripeController extends Controller
         return view('stripe.index');
     }
 
-    public function checkout()
+    public function checkout(Request $request, $plan_id)
     {
-        \Stripe\Stripe::setApiKey(config('app.stripe_sk'));
-
-        $session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [
-                [
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => [
-                            'name' => 'Weekly Opportunities',
-                        ],
-                        'unit_amount' => 24900,
-                    ],
-                    'quantity' => 1,
-                ],
-            ],
-            'mode' => 'payment',
-            'success_url' => route('stripe.success'),
-            'cancel_url' => route('stripe.index')
-        ]);
-
-        return redirect()->away($session->url);
+        return $request->user()
+                        ->newSubscription('prod_Q6dD1sHZoF0USu', $plan_id)
+                        ->checkout([
+                            'success_url' => route('home'),
+                            'cancel_url' => route('stripe.index')
+                        ]);
     }
 
     public function success()
