@@ -15,9 +15,10 @@ class StripeController extends Controller
     {
         return $request->user()
                         ->newSubscription(config('stripe.prod_id'), $plan_id)
+                        ->trialDays(7)
                         ->checkout([
                             'success_url' => route('home'),
-                            'cancel_url' => route('stripe.index')
+                            'cancel_url' => route('stripe.checkout', $plan_id)
                         ]);
     }
 
