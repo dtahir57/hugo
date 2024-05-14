@@ -23,7 +23,9 @@ export default defineConfig({
                 'resources/assets/vendors/feather-icons/feather.min.js',
                 'resources/assets/vendors/prism/prism.js',
                 'resources/assets/js/phoenix.js',
-                'resources/assets/js/ecommerce-dashboard.js'
+                'resources/assets/js/ecommerce-dashboard.js',
+                'resources/assets/img/team/40x40/57.webp',
+                
             ],
             refresh: true,
         }),
