@@ -25,6 +25,7 @@ export default defineConfig({
                 'resources/assets/js/phoenix.js',
                 'resources/assets/js/ecommerce-dashboard.js',
                 'resources/assets/img/team/40x40/57.webp',
+                'resources/assets/img/team/72x72/57.webp'
                 
             ],
             refresh: true,
