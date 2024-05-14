@@ -37,4 +37,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    optimizeDeps: {
+        include: ['bootstrap'] // Include Bootstrap in optimized dependencies
+    },
 });
