@@ -12,8 +12,8 @@
     <!-- ===============================================-->
     <title>@yield('title')</title>
 
-    {{-- <link rel="manifest" href="{{ Vite::asset('resources/assets/img/favicons/manifest.json')}}"> --}}
-    @vite([ 
+    <link rel="manifest" href="{{ Vite::asset('resources/assets/img/favicons/manifest.json')}}">
+    @vite(['resources/assets/vendors/simplebar/simplebar.min.js', 
             'resources/assets/js/config.js'])
 
 
