@@ -216,7 +216,6 @@
     <!--    JavaScripts-->
     <!-- ===============================================-->
     @vite(['resources/assets/vendors/popper/popper.min.js',
-            'resources/assets/vendors/bootstrap/bootstrap.min.js',
             // 'resources/assets/vendors/anchorjs/anchor.min.js',
             // 'resources/assets/vendors/is/is.min.js',
             'resources/assets/vendors/fontawesome/all.min.js',
@@ -232,6 +231,7 @@
             'resources/assets/js/phoenix.js',
             // 'resources/assets/vendors/echarts/echarts.min.js',
             'resources/assets/js/ecommerce-dashboard.js'])
+          <script src="{{ Vite::asset('resources/assets/vendors/bootstrap/bootstrap.min.js') }}"></script>
           <script
           src="https://code.jquery.com/jquery-3.7.1.min.js"
           integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
