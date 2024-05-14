@@ -14,7 +14,7 @@ class StripeController extends Controller
     public function checkout(Request $request, $plan_id)
     {
         return $request->user()
-                        ->newSubscription('prod_Q6dD1sHZoF0USu', $plan_id)
+                        ->newSubscription(config('stripe.prod_id'), $plan_id)
                         ->checkout([
                             'success_url' => route('home'),
                             'cancel_url' => route('stripe.index')

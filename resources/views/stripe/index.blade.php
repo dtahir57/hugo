@@ -80,7 +80,7 @@
       <div class="row mt-4">
         <div class="col-md-6 col-sm-12 mx-auto">
           <div class="d-flex justify-content-around">
-            <a href="{{ route('stripe.checkout', 'price_1PGPwn1qUdsvpMoz2gaVJjiW') }}" type="button" class="btn btn-success btn-block">Go to checkout</a>
+            <a href="{{ route('stripe.checkout', config('stripe.price_id')) }}" type="button" class="btn btn-success btn-block">Go to checkout</a>
             <div class="logout">
               <a type="button" class="btn btn-primary" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
