@@ -3,9 +3,6 @@
 @section('title', 'Opportunities')
 
 @section('styles')
-{{-- <link rel="stylesheet" href="{{ Vite::asset('resources/css/app.css') }}"> --}}
-<link href="{{ Vite::asset('vendor/pagination/pagination.css') }}" rel="stylesheet">
-</style>
 @endsection
 
 @section('content')
