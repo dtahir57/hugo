@@ -215,8 +215,9 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    @vite(['resources/assets/vendors/popper/popper.min.js',
-            'resources/assets/vendors/bootstrap/bootstrap.min.js',
+    <script src="resources/assets/vendors/popper/popper.min.js"></script>
+    <script src="resources/assets/vendors/bootstrap/bootstrap.min.js"></script>
+    @vite([
             // 'resources/assets/vendors/anchorjs/anchor.min.js',
             // 'resources/assets/vendors/is/is.min.js',
             'resources/assets/vendors/fontawesome/all.min.js',
