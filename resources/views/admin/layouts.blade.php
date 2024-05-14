@@ -215,8 +215,8 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="resources/assets/vendors/popper/popper.min.js"></script>
-    <script src="resources/assets/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="{{ Vite::asset('resources/assets/vendors/popper/popper.min.js')}}"></script>
+    <script src="{{ Vite::asset('resources/assets/vendors/bootstrap/bootstrap.min.js')}}"></script>
     @vite([
             // 'resources/assets/vendors/anchorjs/anchor.min.js',
             // 'resources/assets/vendors/is/is.min.js',
