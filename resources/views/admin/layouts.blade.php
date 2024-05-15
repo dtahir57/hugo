@@ -120,6 +120,24 @@
                   </a>
                 </div>
               </li>
+              <li class="nav-item">
+                <div class="nav-item-wrapper">
+                    <a class="nav-link label-1 " href="{{ route('logout') }}" role="button" data-bs-toggle="" aria-expanded="false" onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <div class="d-flex align-items-center">
+                            <span class="nav-link-icon">
+                                <span data-feather="users"></span>
+                            </span>
+                            <span class="nav-link-text-wrapper">
+                                <span class="nav-link-text">Logout</span>
+                            </span>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                          @csrf
+                        </form>
+                  </a>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
