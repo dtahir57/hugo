@@ -37,7 +37,6 @@ export default defineConfig({
         }),
     ],
     build: {
-        // The outDir should be set to your public directory
         rollupOptions: {
             output:{
                 manualChunks(id) {
