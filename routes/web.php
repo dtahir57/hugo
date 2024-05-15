@@ -13,7 +13,7 @@ Route::get('stripe/checkout/{plan_id}', [StripeController::class, 'checkout'])->
 
 Auth::routes();
 Route::get('/', function () {
-    return redirect()->route('register');
+    return redirect()->route('login');
 });
 
 Route::middleware([SubscriptionMiddleware::class])->group(function () {
