@@ -29,7 +29,7 @@ class SendOpportunity extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Opportunity',
+            subject: 'New Opportunity In Your Account',
         );
     }
 
