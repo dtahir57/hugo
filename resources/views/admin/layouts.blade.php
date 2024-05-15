@@ -93,7 +93,8 @@
                     <a class="nav-link label-1 {{ Request::is('admin/opportunities') ? 'active' : '' }}
                     {{ Request::is('admin/opportunity/create') ? 'active' : '' }}
                     {{ Request::is('admin/opportunity/view/'.request()->route('id')) ? 'active' : '' }}
-                    {{ Request::is('admin/opportunity/'.request()->route('id').'/edit') ? 'active' : '' }}" href="{{ route('admin.opportunity.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
+                    {{ Request::is('admin/opportunity/'.request()->route('id').'/edit') ? 'active' : '' }}
+                    {{ Request::is('admin/opportunity/'.request()->route('opp_id').'/assign_users') ? 'active' : '' }}" href="{{ route('admin.opportunity.index') }}" role="button" data-bs-toggle="" aria-expanded="false">
                         <div class="d-flex align-items-center">
                             <span class="nav-link-icon">
                                 <span data-feather="clipboard"></span>

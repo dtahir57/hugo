@@ -8,15 +8,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\StripeController;
 use App\Http\Middleware\SubscriptionMiddleware;
 
-// Route::get('/', function() {
-//     return view('welcome');
-// });
-
 Route::get('stripe', [StripeController::class, 'index'])->name('stripe.index');
 Route::get('stripe/checkout/{plan_id}', [StripeController::class, 'checkout'])->name('stripe.checkout');
-// Route::get('stripe/success', function () {
-//     return redirect()->route('oppo')
-// })
 
 Auth::routes();
 Route::get('/', function () {
@@ -46,6 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], functio
     Route::get('opportunity/filter', [OpportunityController::class, 'filter_opportunities'])->name('admin.opportunity.filter');
 
     Route::patch('opportunity/update/status/{id}', [OpportunityController::class, 'update_status'])->name('admin.opportunity.status');
+    Route::get('opportunity/{opp_id}/assign_users', [OpportunityController::class, 'assign_view'])->name('admin.opportunity.assign.view');
     Route::post('opportunity/assign_users/{opp_id}', [OpportunityController::class, 'assign_users'])->name('admin.opportunity.assign.users');
     Route::get('opportunity/{opp_id}/detach/{usr_id}', [OpportunityController::class, 'detach_user'])->name('admin.opportunity.detach.user');
     // Opportunity Routes Ends here

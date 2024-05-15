@@ -14,9 +14,14 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h4>Opportunities</h4>
-                    <div>
+                    <div class="buttons">
                         <a href="{{ route('admin.opportunity.edit', $opportunity->id) }}" type="button" class="btn btn-primary btn-sm">Edit</a>
-                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button>
+                        <form action="{{ route('admin.opportunity.delete', $opportunity->id) }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button class="btn btn-danger mt-3" type="submit">Delete</button>
+                        </form>
+                        {{-- <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Delete</button> --}}
                     </div>
                 </div>
                 <nav aria-label="breadcrumb" class="mt-3">
@@ -104,7 +109,7 @@
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h5>Assigned Users</h5>
-                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignUserModal">Assign User</button>
+                    <a href="{{ route('admin.opportunity.assign.view', $opportunity->id) }}" type="button" class="btn btn-primary btn-sm">Assign User</a>
                 </div>
             </div>
             <div class="card-body">

@@ -165,4 +165,12 @@ class OpportunityController extends Controller
 
         return view('admin.opportunity.index', compact('opportunities', 'type', 'status'));
     }
+
+    public function assign_view($opp_id)
+    {
+        $users = User::doesntHave('roles')->get();
+        $opportunity = Opportunity::find($opp_id);
+
+        return view('admin.opportunity.assign_user', compact('opp_id', 'users', 'opportunity'));
+    }
 }

@@ -6,6 +6,9 @@
 @endsection
 
 @section('content')
+@if(session('deleted'))
+    <li class="alert alert-success">{{ session('deleted') }}</li>
+@endif
 @if ($opportunities->count() > 0)
 <div class="row">
     <div class="col-12">
