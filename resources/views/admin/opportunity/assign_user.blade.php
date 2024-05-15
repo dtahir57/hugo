@@ -43,6 +43,10 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/choices.js/1.1.6/choices.min.js" integrity="sha512-7PQ3MLNFhvDn/IQy12+1+jKcc1A/Yx4KuL62Bn6+ztkiitRVW1T/7ikAh675pOs3I+8hyXuRknDpTteeptw4Bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const element = document.querySelector('.form-select');
+    const choices = new Choices(element);
+</script>
 
 {{-- <script src="{{ Vite::asset('resources/assets/vendors/choices/choices.min.js')}}"></script> --}}
 @endsection
