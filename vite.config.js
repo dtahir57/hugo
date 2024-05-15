@@ -36,7 +36,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
-    optimizeDeps: {
-        include: ['bootstrap'] // Include Bootstrap in optimized dependencies
+    build: {
+        // The outDir should be set to your public directory
+        outDir: 'public/build',
     },
 });
