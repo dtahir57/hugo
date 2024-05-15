@@ -32,7 +32,6 @@ export default defineConfig({
                 'resources/assets/vendors/flatpickr/flatpickr.min.js',
                 'resources/assets/vendors/choices/choices.min.css',
                 'resources/assets/vendors/choices/choices.min.js'
-                
             ],
             refresh: true,
         }),
