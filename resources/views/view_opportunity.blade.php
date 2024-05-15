@@ -88,7 +88,7 @@
         @else
         <div class="card">
             <div class="card-header">
-                <h4>Post a Feedback</h4>
+                <h4>Post Feedback</h4>
             </div>
             <div class="card-body">
                 <form action="{{ route('user.feedback.store', $opportunity->id) }}" method="POST">
