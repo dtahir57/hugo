@@ -3,7 +3,9 @@
 @section('title', 'Opportunities')
 
 @section('styles')
-<link href="{{ Vite::asset('resources/assets/vendors/choices/choices.min.css')}}" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/1.1.6/styles/css/choices.min.css" integrity="sha512-/PTsSsk4pRsdHtqWjRuAL/TkYUFfOpdB5QDb6OltImgFcmd/2ZkEhW/PTQSayBKQtzjQODP9+IAeKd7S2yTXtA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+{{-- <link href="{{ Vite::asset('resources/assets/vendors/choices/choices.min.css')}}" rel="stylesheet" /> --}}
 @endsection
 
 @section('content')
@@ -40,5 +42,7 @@
 @endsection
 
 @section('scripts')
-<script src="{{ Vite::asset('resources/assets/vendors/choices/choices.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/choices.js/1.1.6/choices.min.js" integrity="sha512-7PQ3MLNFhvDn/IQy12+1+jKcc1A/Yx4KuL62Bn6+ztkiitRVW1T/7ikAh675pOs3I+8hyXuRknDpTteeptw4Bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{{-- <script src="{{ Vite::asset('resources/assets/vendors/choices/choices.min.js')}}"></script> --}}
 @endsection
