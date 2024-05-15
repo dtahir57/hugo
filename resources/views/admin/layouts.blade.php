@@ -155,7 +155,9 @@
             <a class="navbar-brand me-1 me-sm-3" href="{{ route('admin.dashboard') }}">
               <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center">
-                  <p class="logo-text ms-2 d-none d-sm-block">HUGO</p>
+                  {{-- <p class="logo-text ms-2 d-none d-sm-block">HUGO</p> --}}
+                  <img src="{{ Vite::asset('resources/assets/img/PNG-logo.webp') }}" alt="" width="200">
+
                 </div>
               </div>
             </a>
