@@ -20,7 +20,7 @@ class OpportunityController extends Controller
      */
     public function index()
     {
-        $opportunities = DB::table('opportunities')->paginate(10);
+        $opportunities = DB::table('opportunities')->latest()->paginate(10);
         return view('admin.opportunity.index', compact('opportunities'));
     }
 
