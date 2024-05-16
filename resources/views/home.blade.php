@@ -4,6 +4,7 @@
 
 @section('content')
 @if ($opportunities->count() > 0)
+<a href="{{ route('stripe.checkout', config('stripe.price_id')) }}" type="button" class="btn btn-success">Checkout</a>
 <div class="row">
     <div class="col-12">
         <div class="card">

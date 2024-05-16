@@ -18,12 +18,17 @@ class StripeController extends Controller
                         ->trialDays(8)
                         ->checkout([
                             'success_url' => route('home'),
-                            'cancel_url' => route('stripe.checkout', $plan_id)
+                            'cancel_url' => route('stripe.cancel')
                         ]);
     }
 
     public function success()
     {
         return view('stripe.index');
+    }
+
+    public function cancel()
+    {
+        return view('stripe.cancel');
     }
 }
