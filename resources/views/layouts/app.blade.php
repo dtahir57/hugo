@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Prospect Hacker</title>
+    <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/assets/img/PH2.png') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">

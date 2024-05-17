@@ -107,4 +107,10 @@
 
 @section('scripts')
 <script src="{{ Vite::asset('resources/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="https://cdn.tiny.cloud/1/4q7pc096pg4e1sg52h65m08gb2ljx94x3kvpe55rms49dksw/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea'
+  });
+</script>
 @endsection

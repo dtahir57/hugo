@@ -62,7 +62,7 @@
                 <div class="row">
                     <div class="col-12 mt-5">
                         <p>
-                            {{ $opportunity->opportunity_info }}
+                            {!! $opportunity->opportunity_info !!}
                         </p>
                     </div>
                 </div>

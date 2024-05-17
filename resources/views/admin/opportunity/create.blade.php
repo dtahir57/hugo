@@ -1,6 +1,6 @@
 @extends('admin.layouts')
 
-@section('title', 'HUGO | Add new opportunity')
+@section('title', 'Prospect Hacker | Add new opportunity')
 
 @section('styles')
 <link href="{{ Vite::asset('resources/assets/vendors/flatpickr/flatpickr.min.css')}}" rel="stylesheet">
@@ -91,7 +91,7 @@
       
                                 <label class="form-label" for="basic-form-info">Opportunity Info</label>
       
-                                <textarea class="form-control" name="opportunity_info" id="basic-form-info" rows="5" placeholder="Opportunity Info">{{ old('opportunity_info') }}</textarea>
+                                <textarea class="form-control" name="opportunity_info" id="basic-form-info" rows="5">{{ old('opportunity_info') }}</textarea>
                               </div>
       
                               <button class="btn btn-primary" type="submit">Submit</button>
@@ -106,4 +106,10 @@
 
 @section('scripts')
 <script src="{{ Vite::asset('resources/assets/vendors/flatpickr/flatpickr.min.js') }}"></script>
+<script src="https://cdn.tiny.cloud/1/4q7pc096pg4e1sg52h65m08gb2ljx94x3kvpe55rms49dksw/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+  tinymce.init({
+    selector: 'textarea'
+  });
+</script>
 @endsection
