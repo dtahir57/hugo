@@ -31,13 +31,13 @@
                         <div class="row">
                             <div class="mb-3 col-6">
 
-                                <label class="form-label" for="basic-form-name">Prospect Name</label>
+                                <label class="form-label" for="basic-form-name">Prospect Name <span style="color: red;">*</span></label>
       
                                 <input class="form-control" name="prospect_name" value="{{ old('prospect_name') }}" id="basic-form-name" type="text" placeholder="Prospect Name" />
                               </div>
                               <div class="mb-3 col-6">
       
-                                <label class="form-label" for="basic-form-email">Prospect Email</label>
+                                <label class="form-label" for="basic-form-email">Prospect Email <span style="color: red;">*</span></label>
       
                                 <input class="form-control" name="prospect_email" value="{{ old('prospect_email') }}" id="basic-form-email" type="email" placeholder="name@example.com" />
                               </div>
@@ -58,7 +58,7 @@
 
                               <div class="mb-3 col-6">
       
-                                <label class="form-label" for="basic-form-email">Title</label>
+                                <label class="form-label" for="basic-form-email">Title <span style="color: red;">*</span></label>
       
                                 <input class="form-control" required name="title" value="{{ old('title') }}" id="basic-form-title" type="text" placeholder="Title" />
                               </div>
@@ -71,7 +71,7 @@
                               </div>
 
                               <div class="mb-3 col-6">
-                                <label class="form-label" for="datepicker">Closing Date</label>
+                                <label class="form-label" for="datepicker">Closing Date <span style="color: red;">*</span></label>
 
                                 <input class="form-control" required name="closing_date" value="{{ old('closing_date') }}" id="datepicker" type="date" placeholder="dd/mm/yyyy"/>
                               </div>
