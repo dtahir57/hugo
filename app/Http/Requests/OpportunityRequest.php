@@ -28,7 +28,7 @@ class OpportunityRequest extends FormRequest
             case 'POST':
                 return [
                     'prospect_name' => 'required|string',
-                    'prospect_email' => 'required|email|unique:opportunities',
+                    'prospect_email' => 'required|email',
                     'title' => 'required|string',
                     // 'prospect_phone' => 'string',
                     'closing_date' => 'required'
