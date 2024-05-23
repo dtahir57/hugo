@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Session;
 
 class UserController extends Controller
 {
@@ -62,6 +63,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Session::flash('deleted', 'User deleted successfully!');
+        return redirect()->route('admin.user.index');
     }
 }

@@ -7,6 +7,9 @@
 @endsection
 
 @section('content')
+@if(session('deleted'))
+    <li class="alert alert-danger">{{ session('deleted') }}</li>
+@endif
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -27,6 +30,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -35,6 +39,9 @@
                                 <th scope="row">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    <a href="{{ route('admin.user.destroy', $user->id) }}" type="button" class="btn btn-danger btn-sm">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -47,5 +47,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:Super_User']], functio
 
     // Users Routes Starts here
     Route::get('users', [UserController::class, 'index'])->name('admin.user.index');
+    Route::get('user/destroy/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
     // Users Routes ends here
 });
