@@ -64,7 +64,7 @@
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Get Started For 7 Days Free') }}
+                                    {{ __('Get Started') }}
                                 </button>
                             </div>
                         </div>
