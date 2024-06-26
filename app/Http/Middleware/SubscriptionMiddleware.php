@@ -19,6 +19,9 @@ class SubscriptionMiddleware
         if (!auth()->user()->subscribedToPrice(config('stripe.price_id'), config('stripe.prod_id'))) {
             return redirect()->route('stripe.checkout', config('stripe.price_id'));
         }  
+        // if (!auth()->user()->subscribed()) {
+        //     return redirect()->route('stripe.checkout', config('stripe.price_id'));
+        // }
             return $next($request);
 
     }
