@@ -16,7 +16,7 @@ class SubscriptionMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->user()->subscribedToPrice(config('stripe.price_id'), config('stripe.prod_id'))) {
+        if ( !auth()->user()->subscribedToPrice(config('stripe.price_id'), config('stripe.prod_id')) OR !auth()->user()->subscribedToPrice(config('stripe.mo_price_id'), config('stripe.mo_prod_id'))) {
             return redirect()->route('stripe.checkout', config('stripe.price_id'));
         }  
         // if (!auth()->user()->subscribed()) {
